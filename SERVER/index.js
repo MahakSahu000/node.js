@@ -8,6 +8,9 @@ const app = express();
 app.get('/',(req,res) =>{
   return res.send("hello from home page");
 });
+app.get('/profile',(req,res) =>{
+  return res.send("hello from PROFILE page");
+});
 
 app.get('/about',(req,res) =>{
   return res.send("hello from about page " + 'hey ' + req.query.myname + 'you are ' + req.query.age);
