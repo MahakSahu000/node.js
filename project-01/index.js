@@ -1,9 +1,41 @@
 const express = require("express");
 const users = require("./MOCK_DATA.json");
 const fs  = require("fs");
+const mongoose = require("mongoose");
 
 const app = express();
 const PORT = 8000;
+
+
+
+const userSchema = new mongoose.Schema({
+  firstName : {
+    type : String,
+    required : true,
+  },
+    lastName : {
+     type : String,
+    },
+    email :{
+      type : String,
+      required : true,
+      unique : true,
+
+    },
+    jobTitle :{
+      type : String,
+    },
+    gender :{
+      type : String,
+    },
+
+})
+
+const user = mongoose.model('user' , userSchema) ;
+
+
+
+
 // middleware - plugin
 app.use(express.urlencoded({ extended: false}));
 // app.use(express.json({ extended: false}));

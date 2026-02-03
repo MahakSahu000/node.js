@@ -1,0 +1,3 @@
+schema - define the structure;
+    schems -  model
+    Using Model  we do CRUD operations // create read upadte delete
