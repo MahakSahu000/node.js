@@ -7,29 +7,37 @@
 //   console.log("inside setTimeout");
   
 // })
-setTimeout(() => {
-    console.log("hi")
-},1000);
+// setTimeout(() => {
+//     console.log("hi")
+// },1000);
 
-// promises
+// // promises
 
-const nayapromise =  new Promise((resolve , reject) => {
-  let deliver = true;
-  if(deliver){
-    resolve("Promises has been resolved successfully , your order is delivered");
-  }
-  else{
-    reject("Promises has been rejected , your order is not delivered");
-  }
-});
+// const nayapromise =  new Promise((resolve , reject) => {
+//   let deliver = true;
+//   if(deliver){
+//     resolve("Promises has been resolved successfully , your order is delivered");
+//   }
+//   else{
+//     reject("Promises has been rejected , your order is not delivered");
+//   }
+// });
 
-nayapromise.then(() =>{
-  console.log("This is in the block");
-}).catch(() =>{
-  console.log("This is in the catch block");
-});
+// nayapromise.then(() =>{
+//   console.log("This is in the block");
+// }).catch(() =>{
+//   console.log("This is in the catch block");
+// });
 
 
+fetch("https://jsonplaceholder.typicode.com/todos/1")
+   .then(response => response.json())
+   .then(json => console.log(json))
+   .catch(error => console.log("Error: ", error));
+
+
+  
+ 
 
 
 
