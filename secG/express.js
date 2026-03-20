@@ -59,7 +59,7 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-const notes = [];
+const notes = [];//12
 
 app.post("/notes" , (req ,res) =>{
   console.log(req.body);
@@ -75,21 +75,23 @@ app.get("/notes" , (req ,res) =>{
 });
 app.delete("/notes/:id" , (req,res) =>{
   const id = req.params.id;
-  notes.splice(id , 1)
-  res.status(200).json({message : "ye hua mer adat delete"});
+  notes.splice(id , 1);
+  res.status(200).json({message : "ye hua mera data delete"});
 })
 app.put("/notes/:id" , (req,res) =>{
-  const id = req.params.id;
+  const id = req.params.id;//11
   notes[id] = req.body;
-  res.status(200).json({message : "ye hua mer adat update"});
+  res.status(200).json({message : "ye hua mera data update"});
 })
 app.patch("/notes/:id" , (req,res) =>{
   const id = req.params.id;
-  notes[id].description = req.body.description;
-  res.status(200).json({message : "ye hua mer adat update"});
+  notes[id].name = req.body.name;
+  res.status(200).json({message : "ye hua mera data update"});
 })
 app.listen(3000 , () =>{
   console.log("ye mera hua server create");
 })
+
+
 
 
