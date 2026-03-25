@@ -226,63 +226,78 @@
 // });
 
 
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
-const url = require("url");
+// app.get("/" , (req , res) =>{
+//     const name = "Mahak Sahu";
+// const http = require("http");
+// const fs = require("fs");
+// const path = require("path");
+// const url = require("url");
 
-const visitFile = path.join(__dirname , "visits.txt");
-const logFile = path.join(__dirname ,  "logs.txt");
+// const visitFile = path.join(__dirname , "visits.txt");
+// const logFile = path.join(__dirname ,  "logs.txt");
 
-const server = http.createServer((req,res) =>{
+// const server = http.createServer((req,res) =>{
 
-    const data = url.parse(req.url , true);
-    const route = data.pathname; 
-    const time = new Date().toISOString().replace("T" , " ").split(".")[0];
-    const log = `[${time}] | ${req.method} | ${req.url} \n`;
+//     const data = url.parse(req.url , true);
+//     const route = data.pathname; 
+//     const time = new Date().toISOString().replace("T" , " ").split(".")[0];
+//     const log = `[${time}] | ${req.method} | ${req.url} \n`;
 
-    fs.appendFile(logFile , log , () => {});
+//     fs.appendFile(logFile , log , () => {});
 
-    if(route === "/visit"){
-        fs.readFile(visitFile ,  "utf-8" , (err , count) =>{
-            const visits = 0;
-            if(!err && count){
-                visits = parseInt(count);
-            }
-            visits ++;
+//     if(route === "/visit"){
+//         fs.readFile(visitFile ,  "utf-8" , (err , count) =>{
+//             const visits = 0;
+//             if(!err && count){
+//                 visits = parseInt(count);
+//             }
+//             visits ++;
 
-            fs.writeFile(visitFile , visits.toString() , () => {
-                  res.end("visits count :" + visits);
-            });
+//             fs.writeFile(visitFile , visits.toString() , () => {
+//                   res.end("visits count :" + visits);
+//             });
 
-        });
-    }
+//         });
+//     }
 
-    else if(route ==="/count"){
-        fs.readFile(visitFile , "utf-8" , (err , count) =>{
-            if(err){
-                res.end("No Visits Recorded");
+//     else if(route ==="/count"){
+//         fs.readFile(visitFile , "utf-8" , (err , count) =>{
+//             if(err){
+//                 res.end("No Visits Recorded");
 
-            }
-            else{
-                res.end("count :" + count);
-            }
-        });
-    }
-    else if(route === "/reset"){
-        fs.writeFile(visitFile ,  "0" ,  () =>{
-            res.end("visit count reset successfully");
-        });
-    }
-    else{
-        res.end("404 Not found");
-    }
+//             }
+//             else{
+//                 res.end("count :" + count);
+//             }
+//         });
+//     }
+//     else if(route === "/reset"){
+//         fs.writeFile(visitFile ,  "0" ,  () =>{
+//             res.end("visit count reset successfully");
+//         });
+//     }
+//     else{
+//         res.end("404 Not found");
+//     }
+
+// });
+
+// server.listen(3000 , () =>{
+//     console.log("Server is running on port 3000");
+// });
+
+
+const express = require("express"); 
+const app = express();  
+app.set("view engine" , "ejs");
+app.use(express.static("public"));
+app.get("/" , (req , res) => {
+    res.render("file");
 
 });
-
-server.listen(3000 , () =>{
-    console.log("Server is running on port 3000");
-});
+app.listen(3000 , () =>{
+    console.log("ye mera hua server create  with ejs");
+})
 
 
 
