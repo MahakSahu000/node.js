@@ -296,7 +296,7 @@ app.get("/" , (req , res) => {
 
 });
 app.listen(3000 , () =>{
-    console.log("ye mera hua server create  with ejs");
+    console.log("ye mera hua server create with ejs portal 3000");
 })
 
 
